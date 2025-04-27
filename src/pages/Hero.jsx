@@ -4,7 +4,7 @@ function Landing() {
   const navigate = useNavigate();
 
   const buttonStyles =
-    "px-12 py-4 text-3xl rounded-full font-bold shadow-lg transition-all duration-500 transform hover:scale-105 hover:text-3xl will-change-transform";
+    "px-12 py-4 text-3xl rounded-full shadow-lg font-bold transition-all duration-500 transform hover:scale-105 hover:text-3xl will-change-transform";
 
   const handleLearnMore = () => {
     const footer = document.getElementById("footer");
@@ -61,18 +61,18 @@ function Landing() {
       {/* Footer (ahora está fuera del contenedor principal) */}
       <footer
         id="footer"
-        className="bg-black text-yellow-400 px-6 py-16 flex flex-col items-center justify-center text-center"
+        className="bg-gray-950 text-yellow-400 px-6 py-16 flex flex-col items-center justify-center text-center"
       >
         <h2 className="text-4xl md:text-5xl font-bold mb-6">¿Qué es TAPPAS?</h2>
-        <p className="text-lg md:text-xl max-w-3xl mb-10">
+        <p className="text-lg md:text-xl max-w-3xl mb-10 text-white">
           TAPPAS es tu mejor aliado para encontrar las mejores tapas en
           cualquier ciudad. Nuestra app crea un exclusivo podio seleccionando
-          los <strong>3 mejores restaurantes</strong>
+          los <strong>3 mejores restaurantes </strong>
           según valoraciones reales, basándose en la tapa que tú elijas. Fácil,
           rápido y delicioso: encuentra dónde disfrutar lo mejor de lo mejor.
         </p>
 
-        <div className="border-t border-yellow-400 w-full mt-10 pt-6 text-sm">
+        <div className=" w-full mt-10 pt-6 text-sm text-white">
           © Tappas 2025. Todos los derechos reservados.
         </div>
       </footer>

@@ -1,22 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Hero from "./pages/Hero";
-import ProtectedRoute from "./components/ProtectedRoute";
-import EventsExplorer from "./pages/EventsExplorer";
-// import SubscriberDashboard from "./pages/SubscriberDashboard";
-// import UnauthorizedPage from "./pages/UnauthorizedPage";
+import Landing from "./pages/Hero"; // Asegúrate de que la importación sea correcta
+import Explorar from "./pages/Explorar";
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<Hero />} />
-        {/* Protected Routes for Hosts */}
+        {/* Ruta pública principal */}
+        <Route path="/" element={<Landing />} />
 
-        {/* Protected Routes for Subscribers */}
-        <Route element={<ProtectedRoute allowedRoles={["subscriber"]} />}>
-          <Route path="/explorar-eventos" element={<EventsExplorer />} />
-        </Route>
+        {/* Ruta pública para explorar */}
+        <Route path="/explorar" element={<Explorar />} />
       </Routes>
     </Router>
   );
