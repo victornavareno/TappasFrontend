@@ -28,7 +28,8 @@ function Landing() {
             <img
               src="/logo_tappas.png"
               alt="Tappas logo"
-              className="h-24 w-auto"
+              className="h-24 w-auto hover:cursor-pointer"
+              onClick={handleLearnMore}
             />
           </div>
         </header>

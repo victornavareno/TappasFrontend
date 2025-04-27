@@ -32,14 +32,15 @@ export default function Explorar() {
           <img
             src="/logo_tappas.png"
             alt="Tappas logo"
-            className="h-24 w-auto"
+            className="h-24 w-auto hover:cursor-pointer"
+            onClick={() => navigate("/")}
           />
         </div>
       </header>
 
       {/* Contenido Principal de Búsqueda */}
       <main className="container mx-auto flex-1 flex flex-col items-center justify-center px-6 py-16">
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-8 text-center">
+        <h1 className="text-4xl md:text-7xl  font-extrabold mb-8 text-center">
           TAPPAS
         </h1>
 
