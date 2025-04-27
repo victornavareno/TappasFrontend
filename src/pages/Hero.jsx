@@ -40,7 +40,8 @@ function Landing() {
             TAPPAS
           </h1>
           <p className="text-2xl md:text-3xl mb-0 max-w-2xl transform translate-y-[-1rem]">
-            Elige tu ciudad y qué te apetece y te recomendamos el mejor sitio!
+            Elige tu <strong> ciudad, una tapa </strong> y nosotros te
+            recomendamos el <strong> mejor sitio! </strong>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-8">
             <button
@@ -66,12 +67,26 @@ function Landing() {
       >
         <h2 className="text-4xl md:text-5xl font-bold mb-6">¿Qué es TAPPAS?</h2>
         <p className="text-lg md:text-xl max-w-3xl mb-10 text-white">
-          TAPPAS es tu mejor aliado para encontrar las mejores tapas en
-          cualquier ciudad. Nuestra app crea un exclusivo podio seleccionando
-          los <strong>3 mejores restaurantes </strong>
-          según valoraciones reales, basándose en la tapa que tú elijas. Fácil,
-          rápido y delicioso: encuentra dónde disfrutar lo mejor de lo mejor.
+          <strong>TAPPAS</strong> es tu mejor aliado para encontrar las mejores
+          tapas en{" "}
+          <strong>
+            Extremadura. <br />{" "}
+          </strong>{" "}
+          Nuestra App crea un podio seleccionando los{" "}
+          <strong>3 mejores restaurantes </strong>
+          según valoraciones reales, basándose en la tapa que tú elijas. <br />
+          <br />
+          <strong>
+            Fácil, rápido y delicioso. <br />
+            Encuentra dónde disfrutar de tus comidas favoritas.
+          </strong>
         </p>
+        <button
+          className={`${buttonStyles} bg-yellow-400 text-black`}
+          onClick={() => navigate("/explorar")}
+        >
+          Prueba Tappas
+        </button>
 
         <div className=" w-full mt-10 pt-6 text-sm text-white">
           © Tappas 2025. Todos los derechos reservados.

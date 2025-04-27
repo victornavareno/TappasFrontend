@@ -10,11 +10,8 @@ export default function Explorar() {
   const handleSearch = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulamos una búsqueda con un timeout
     setTimeout(() => {
       setIsLoading(false);
-      // Aquí iría la navegación a los resultados
-      // navigate(`/resultados?food=${encodeURIComponent(food)}&city=${encodeURIComponent(city)}`);
       console.log("Buscando:", food, "en", city);
     }, 1500);
   };
@@ -26,39 +23,39 @@ export default function Explorar() {
         backgroundImage: "url('/backgrounds/TappasExplorerBackground.png')",
       }}
     >
-      {/* Header consistente con la página principal */}
+      {/* Header minimalista */}
       <header className="container mx-auto px-6 py-4">
         <div className="flex items-center">
           <img
             src="/logo_tappas.png"
             alt="Tappas logo"
-            className="h-24 w-auto hover:cursor-pointer"
+            className="h-24 w-auto hover:cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => navigate("/")}
           />
         </div>
       </header>
 
-      {/* Contenido Principal de Búsqueda */}
-      <main className="container mx-auto flex-1 flex flex-col items-center justify-center px-6 py-16">
-        <h1 className="text-4xl md:text-7xl  font-extrabold mb-8 text-center">
-          TAPPAS
-        </h1>
+      {/* Contenido Principal - Centrado vertical y horizontalmente */}
+      <main className="flex-1 flex items-center justify-center p-6">
+        <div className="w-full max-w-2xl bg-black bg-opacity-75 rounded-3xl p-10 shadow-2xl backdrop-blur-sm border border-yellow-400/20">
+          {/* Título principal más destacado */}
+          <h1 className="text-6xl md:text-7xl font-extrabold mb-2 text-center text-white italic">
+            TAPPAS
+          </h1>
 
-        <div className="w-full max-w-md bg-black bg-opacity-70 rounded-3xl p-8 shadow-2xl">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-yellow-400">
-            ¿Qué te apetece comer hoy?
-          </h2>
+          {/* Subtítulo */}
+          <p className="text-2xl text-center mb-8 text-gray-300">
+            Encuentra las mejores tapas en tu ciudad
+          </p>
 
+          {/* Formulario de búsqueda mejorado */}
           <form onSubmit={handleSearch} className="space-y-6">
-            {/* Campo para la tapa */}
-            <div className="space-y-2">
-              <label htmlFor="food" className="block text-lg font-medium">
-                Tu tapa favorita
-              </label>
-              <div className="flex items-center rounded-full bg-gray-800 px-4 py-3">
+            {/* Campo para la tapa - más grande */}
+            <div className="space-y-3">
+              <div className="flex items-center rounded-xl bg-gray-800/80 px-6 py-4 border border-gray-700 hover:border-yellow-400/50 transition-colors">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-yellow-400 mr-2"
+                  className="h-7 w-7 text-yellow-400 mr-3"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -71,10 +68,9 @@ export default function Explorar() {
                   />
                 </svg>
                 <input
-                  id="food"
                   type="text"
-                  placeholder="Ej: Burger, Tortilla, Croquetas..."
-                  className="w-full bg-transparent border-none text-white placeholder-gray-400 focus:outline-none"
+                  placeholder="¿Qué te apetece comer? (Ej: Burger, Tortilla, Croquetas...)"
+                  className="w-full bg-transparent border-none text-xl text-white placeholder-gray-400 focus:outline-none"
                   value={food}
                   onChange={(e) => setFood(e.target.value)}
                   required
@@ -82,15 +78,12 @@ export default function Explorar() {
               </div>
             </div>
 
-            {/* Campo para la ciudad */}
-            <div className="space-y-2">
-              <label htmlFor="city" className="block text-lg font-medium">
-                Tu ciudad
-              </label>
-              <div className="flex items-center rounded-full bg-gray-800 px-4 py-3">
+            {/* Campo para la ciudad - más grande */}
+            <div className="space-y-3">
+              <div className="flex items-center rounded-xl bg-gray-800/80 px-6 py-4 border border-gray-700 hover:border-yellow-400/50 transition-colors">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-yellow-400 mr-2"
+                  className="h-7 w-7 text-yellow-400 mr-3"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -109,10 +102,9 @@ export default function Explorar() {
                   />
                 </svg>
                 <input
-                  id="city"
                   type="text"
-                  placeholder="Ej: Madrid, Barcelona, Sevilla..."
-                  className="w-full bg-transparent border-none text-white placeholder-gray-400 focus:outline-none"
+                  placeholder="Tu ciudad (Ej: Cáceres, Badajoz, Mérida...)"
+                  className="w-full bg-transparent border-none text-xl text-white placeholder-gray-400 focus:outline-none"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                   required
@@ -120,16 +112,16 @@ export default function Explorar() {
               </div>
             </div>
 
-            {/* Botón de búsqueda */}
+            {/* Botón de búsqueda - más destacado */}
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-4 px-6 bg-yellow-400 hover:bg-yellow-300 text-black font-bold rounded-full text-lg transition-colors duration-300 flex items-center justify-center"
+              className="w-full py-5 px-6 bg-yellow-400 hover:bg-yellow-300 text-black font-bold rounded-xl text-xl transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-yellow-400/20"
             >
               {isLoading ? (
                 <>
                   <svg
-                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-black"
+                    className="animate-spin -ml-1 mr-3 h-6 w-6 text-black"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
