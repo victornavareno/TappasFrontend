@@ -1,16 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Landing from "./pages/Hero"; // Asegúrate de que la importación sea correcta
+import Landing from "./pages/Hero";
 import Explorar from "./pages/Explorar";
+import Podium from "./pages/Podium";
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Ruta pública principal */}
         <Route path="/" element={<Landing />} />
-
-        {/* Ruta pública para explorar */}
         <Route path="/explorar" element={<Explorar />} />
+        <Route path="/podium" element={<Podium />} />
       </Routes>
     </Router>
   );

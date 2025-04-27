@@ -12,7 +12,7 @@ export default function Explorar() {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      console.log("Buscando:", food, "en", city);
+      navigate("/podium", { state: { food, city } });
     }, 1500);
   };
 
@@ -69,7 +69,7 @@ export default function Explorar() {
                 </svg>
                 <input
                   type="text"
-                  placeholder="¿Qué te apetece comer? (Ej: Burger, Tortilla, Croquetas...)"
+                  placeholder="¿Qué te apetece comer? "
                   className="w-full bg-transparent border-none text-xl text-white placeholder-gray-400 focus:outline-none"
                   value={food}
                   onChange={(e) => setFood(e.target.value)}
@@ -103,7 +103,7 @@ export default function Explorar() {
                 </svg>
                 <input
                   type="text"
-                  placeholder="Tu ciudad (Ej: Cáceres, Badajoz, Mérida...)"
+                  placeholder="Tu ciudad (Cáceres, Badajoz, Mérida...)"
                   className="w-full bg-transparent border-none text-xl text-white placeholder-gray-400 focus:outline-none"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
@@ -143,7 +143,7 @@ export default function Explorar() {
                   BUSCANDO...
                 </>
               ) : (
-                "FIND NOW"
+                "BUSCAR"
               )}
             </button>
           </form>
