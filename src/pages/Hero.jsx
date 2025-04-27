@@ -1,61 +1,53 @@
 import { useNavigate } from "react-router-dom";
 
-function Hero() {
+function Landing() {
   const navigate = useNavigate();
 
+  const buttonStyles =
+    "px-12 py-4 text-xl rounded-full font-bold shadow-lg transition-all duration-500 transform hover:scale-105 hover:text-xl will-change-transform";
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0a0a1a] via-[#1a1a3a] to-[#2a1a4a] text-white">
+    <div
+      className="min-h-screen bg-cover bg-center bg-no-repeat flex flex-col text-white"
+      style={{
+        backgroundImage: "url('/backgrounds/TappasLandingBackground.png')",
+      }}
+    >
       {/* Header */}
-      <header className="container mx-auto px-6 py-8">
+      <header className="container mx-auto px-6 py-2">
         <div className="flex items-center">
-          <img src="/logo_tango.png" alt="Tango logo" className="h-16 mt-6" />
+          <img
+            src="/logo_tappas.png"
+            alt="Tappas logo"
+            className="h-24 w-auto"
+          />
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-6 flex flex-col lg:flex-row items-center justify-between mt-12 gap-8">
-        {/* Left Column */}
-        <div className="max-w-2xl">
-          <h1 className="text-6xl lg:text-7xl font-extrabold tracking-tight leading-none mb-6">
-            <span className="inline-block">
-              Encuentra{" "}
-              <span className="bg-gradient-to-r from-[#e32eff] to-[#ec008c] bg-clip-text text-transparent">
-                amigos
-              </span>
-            </span>
-            <br />
-            <span className="inline-block">en tu ciudad!</span>
-          </h1>
-          <p className="text-2xl text-gray-300 mb-10">
-            <span className="font-normal">Únete a eventos y disfruta</span>
-            <br />
-            <span className="font-bold">experiencias</span> únicas en grupo
-          </p>
-          <div className="flex justify-center md:justify-start space-x-4">
-            <button className="px-12 py-4 bg-white/10 text-white text-xl rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:text-xl will-change-transform">
-              Saber más
-            </button>
-            <button
-              className="px-12 py-4 bg-gradient-to-r from-[#ec008c] to-[#882eff] text-white text-xl font-bold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:text-xl will-change-transform"
-              onClick={() => navigate("/userSelection")}
-            >
-              Prueba Tango!
-            </button>
-          </div>
-        </div>
+      <main className="container mx-auto flex-1 flex flex-col items-center justify-center text-center px-6 mt-[-4rem]">
+        <h1 className="text-6xl md:text-8xl font-extrabold mb-6 italic">
+          TAPPAS
+        </h1>
 
-        {/* Right Column */}
-        <div className="relative -ml-8">
-          <div className="absolute -inset-1 bg-gradient-to-r from-[#ec008c] to-[#882eff] opacity-30 blur-2xl rounded-[32px]" />
-          <img
-            src="/friends2.png"
-            alt="Friends enjoying time together"
-            className="relative rounded-[32px] max-w-[600px] w-full object-cover"
-          />
+        <p className="text-xl md:text-3xl mb-10 max-w-2xl">
+          Elige tu ciudad y qué te apetece y te recomendamos el mejor sitio!
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4">
+          <button className={`${buttonStyles} bg-white text-black`}>
+            SABER MÁS
+          </button>
+
+          <button
+            className={`${buttonStyles} bg-yellow-400 text-black`}
+            onClick={() => navigate("/explorar")}
+          >
+            ¡A COMER!
+          </button>
         </div>
       </main>
     </div>
   );
 }
 
-export default Hero;
+export default Landing;
