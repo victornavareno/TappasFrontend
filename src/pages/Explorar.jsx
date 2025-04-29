@@ -7,13 +7,38 @@ export default function Explorar() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setTimeout(() => {
+
+    try {
+      const response = await fetch(
+        `http://localhost:8080/restaurantes/top3/${encodeURIComponent(
+          food
+        )}/${encodeURIComponent(city)}`
+      );
+
+      if (!response.ok)
+        throw new Error("No se pudo obtener el top 3 de restaurantes");
+
+      const data = await response.json();
+
+      console.log("Respuesta JSON:", data);
+
+      if (!data || (Array.isArray(data) && data.length === 0)) {
+        alert("No se encontró ningún restaurante con esos criterios.");
+      } else {
+        // Navegar y pasar los datos al Podium
+        navigate("/podium", { state: { food, city, recommendations: data } });
+      }
+    } catch (error) {
+      console.error("Error al buscar recomendaciones:", error);
+      alert(
+        "No se pudo encontrar el top 3 de restaurantes. Inténtalo más tarde."
+      );
+    } finally {
       setIsLoading(false);
-      navigate("/podium", { state: { food, city } });
-    }, 1500);
+    }
   };
 
   return (

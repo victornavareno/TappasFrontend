@@ -18,48 +18,57 @@ export default function Podium() {
   };
 
   // Mock data for restaurant recommendations with random images
-  const mockRecommendations = [
-    {
-      id: 1,
-      name: "Bar Antonio",
-      rating: (Math.random() * 1 + 4).toFixed(1), // Random rating between 4.0 and 5.0
-      image: getRandomRestaurantImage(),
-      address: "123 Culinary St",
-      price: "$$",
-      distance: `${(Math.random() * 2 + 0.5).toFixed(1)} mi`, // Random distance 0.5-2.5mi
-    },
-    {
-      id: 2,
-      name: "Casa Pepe",
-      rating: (Math.random() * 1 + 4).toFixed(1),
-      image: getRandomRestaurantImage(),
-      address: "456 Gourmet Ave",
-      price: "$$$",
-      distance: `${(Math.random() * 2 + 0.5).toFixed(1)} mi`,
-    },
-    {
-      id: 3,
-      name: "El Madroño",
-      rating: (Math.random() * 1 + 4).toFixed(1),
-      image: getRandomRestaurantImage(),
-      address: "789 Delicious Blvd",
-      price: "$$",
-      distance: `${(Math.random() * 2 + 0.5).toFixed(1)} mi`,
-    },
-  ];
-
+  // const mockRecommendations = [
+  //   {
+  //     id: 1,
+  //     name: "Bar Antonio",
+  //     rating: (Math.random() * 1 + 4).toFixed(1), // Random rating between 4.0 and 5.0
+  //     image: getRandomRestaurantImage(),
+  //     address: "123 Culinary St",
+  //     price: "$$",
+  //     distance: `${(Math.random() * 2 + 0.5).toFixed(1)} mi`, // Random distance 0.5-2.5mi
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Casa Pepe",
+  //     rating: (Math.random() * 1 + 4).toFixed(1),
+  //     image: getRandomRestaurantImage(),
+  //     address: "456 Gourmet Ave",
+  //     price: "$$$",
+  //     distance: `${(Math.random() * 2 + 0.5).toFixed(1)} mi`,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "El Madroño",
+  //     rating: (Math.random() * 1 + 4).toFixed(1),
+  //     image: getRandomRestaurantImage(),
+  //     address: "789 Delicious Blvd",
+  //     price: "$$",
+  //     distance: `${(Math.random() * 2 + 0.5).toFixed(1)} mi`,
+  //   },
+  // ];
   useEffect(() => {
     if (location.state) {
-      setFood(location.state.food);
-      setCity(location.state.city);
+      const { food, city, recommendations } = location.state;
+      setFood(food);
+      setCity(city);
+
+      if (recommendations && recommendations.length > 0) {
+        // Mapea los datos del backend a la estructura que espera tu frontend
+        const enriched = recommendations.map((r) => ({
+          id: r.id || Math.random(),
+          name: r.nombre || r.name || "Nombre no disponible", // Asegúrate de usar el campo correcto
+          rating: r.puntuacion || r.rating || 0, // Usa el campo correcto
+          image: getRandomRestaurantImage(), // Esto puedes mantenerlo
+          address: r.direccion || r.address || "Dirección no disponible",
+          price: r.precio || r.price || "$",
+          distance: r.distancia || r.distance || "Distancia no disponible",
+        }));
+
+        setRecommendations(enriched);
+        setShowPodium(true);
+      }
     }
-    // Set recommendations with random images
-    setRecommendations(mockRecommendations);
-    // Show podium after a slight delay for better UX
-    const timer = setTimeout(() => {
-      setShowPodium(true);
-    }, 500);
-    return () => clearTimeout(timer);
   }, [location.state]);
 
   return (
@@ -87,6 +96,7 @@ export default function Podium() {
           <h2 className="mb-2 text-center text-3xl font-black uppercase tracking-tight sm:text-4xl">
             MEJORES SITIOS PARA{" "}
             <span className="text-yellow-400">{food.toUpperCase()}</span>
+            EN <span className="text-white">{city.toUpperCase()}</span>
           </h2>
           <p className="mb-10 text-center text-zinc-400">
             Los 3 mejores sitios en {city} basados en su puntuación y
