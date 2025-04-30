@@ -24,8 +24,7 @@ export default function Podium() {
           rating: r.puntuacion || r.rating || 0,
           image: r.imagen ? `/restaurants/${r.imagen}` : "/default_image.png",
           address: r.direccion || r.address || "Dirección no disponible",
-          price: r.precio || r.price || "$",
-          distance: r.distancia || r.distance || "Distancia no disponible",
+          price: r.modalidad || "Restaurante",
         }));
 
         setRecommendations(enriched);
@@ -58,8 +57,8 @@ export default function Podium() {
         <div className="w-full max-w-6xl bg-black bg-opacity-75 rounded-3xl p-10 shadow-2xl backdrop-blur-sm border border-yellow-400/20 my-8">
           <h2 className="mb-2 text-center text-3xl font-black uppercase tracking-tight sm:text-4xl">
             MEJORES SITIOS PARA{" "}
-            <span className="text-yellow-400">{food.toUpperCase()}</span>
-            EN <span className="text-white">{city.toUpperCase()}</span>
+            <span className="text-yellow-400">{food.toUpperCase()}</span> EN{" "}
+            <span className="text-white">{city.toUpperCase()}</span>
           </h2>
           <p className="mb-10 text-center text-zinc-400">
             Los 3 mejores sitios en {city} basados en su puntuación y
@@ -72,7 +71,7 @@ export default function Podium() {
               <div className="mb-8 flex flex-col items-center">
                 <h3 className="mb-8 flex items-center text-2xl font-bold">
                   <Trophy className="mr-2 h-6 w-6 text-yellow-400" />
-                  THE WINNERS PODIUM
+                  LAS MEJORES TAPPAS EN {city.toUpperCase()}
                 </h3>
 
                 {/* Adjusted podium container with proper spacing */}
@@ -213,7 +212,6 @@ export default function Podium() {
                       </div>
                       <div className="mb-4 flex items-center justify-between text-sm text-zinc-400">
                         <p>{place.address}</p>
-                        <p>{place.distance}</p>
                       </div>
                       <div className="mb-4 flex items-center gap-2">
                         <span className="rounded-full bg-zinc-800 px-3 py-1 text-xs">
