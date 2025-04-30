@@ -172,7 +172,7 @@ export default function Podium() {
                     <p className="mb-2 text-center font-bold line-clamp-1">
                       {recommendations[2].name}
                     </p>
-                    <div className="flex h-[140px] w-full flex-col items-center rounded-t-xl bg-gradient-to-b from-slate-700 to-slate-800 shadow-lg">
+                    <div className="flex h-[160px] w-full flex-col items-center rounded-t-xl bg-gradient-to-b from-slate-700 to-slate-800 shadow-lg">
                       <div className="mt-auto flex h-16 w-full items-center justify-center rounded-t-xl bg-gradient-to-b from-gray-500 to-gray-700">
                         <span className="text-2xl font-black text-white">
                           3
