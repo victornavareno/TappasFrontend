@@ -1,18 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  Star,
-  MapPin,
-  ArrowLeft,
-  Clock,
-  Phone,
-  Users,
-  Utensils,
-  Wifi,
-  CreditCard,
-  ParkingCircle,
-} from "lucide-react";
+import { Star, MapPin, ArrowLeft, Users } from "lucide-react";
 
 export default function Restaurant() {
   const { id } = useParams();
@@ -52,9 +41,7 @@ export default function Restaurant() {
       restaurant.food || "Especialidad de la casa",
     ],
     rating: restaurant.rating || restaurant.puntuacion || 0,
-    imagen: restaurant.image || restaurant.imagen || "/default_image.png",
-    especialidad:
-      restaurant.especialidad || restaurant.food || "Especialidad de la casa",
+    imagen: restaurant.image || restaurant.imagen || "/restaurant_banner.png",
   };
 
   return (
@@ -84,9 +71,9 @@ export default function Restaurant() {
             <img
               src={restaurantData.imagen}
               alt={restaurantData.nombre}
-              className="h-full w-full object-cover brightness-75"
+              className="h-full w-full object-cover brightness-100"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t "></div>
 
             {/* Botón de regreso */}
             <button
@@ -178,11 +165,17 @@ export default function Restaurant() {
                 >
                   <div className="relative h-48 w-full">
                     <img
-                      src={`/placeholder.svg?height=300&width=400&text=${encodeURIComponent(
-                        plato
-                      )}`}
+                      src={`/dishes/${plato
+                        .toLowerCase()
+                        .replace(/\s+/g, "_")}.png`}
                       alt={plato}
                       className="h-full w-full object-cover"
+                      onError={(e) => {
+                        // Fallback to placeholder if image doesn't exist
+                        e.target.src = `/placeholder.svg?height=300&width=400&text=${encodeURIComponent(
+                          plato
+                        )}`;
+                      }}
                     />
                   </div>
                   <div className="p-4">
