@@ -18,6 +18,6 @@ This is the frontend repository, developed with **React** and **Vite**. It conne
 
 ## Authors
 
-- Víctor Navareño – Software Engineer  
+- Víctor Navareño – Software Engineer / Product Designer
 - Sergio Terrazas – Data Scientist
 - Mohamed Zain Din - Resources and System Administrator
